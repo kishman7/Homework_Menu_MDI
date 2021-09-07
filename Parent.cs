@@ -220,6 +220,10 @@ namespace MenuDemo
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //var length = (this.ActiveMdiChild as Child).RichTextBoxChild.SelectedText.Length;
+            if ((this.ActiveMdiChild as Child) == null)// "захист від дурнів", перевіряємо на null, якщо вікно порожнє, то return
+            {
+                return;
+            }
             if ((this.ActiveMdiChild as Child).RichTextBoxChild.SelectedText.Length > 0)
             {
                 (this.ActiveMdiChild as Child).RichTextBoxChild.SelectionFont = new Font((this.ActiveMdiChild as Child).RichTextBoxChild.SelectionFont.FontFamily, float.Parse(toolStripComboBox1.Text), (this.ActiveMdiChild as Child).RichTextBoxChild.SelectionFont.Style);
